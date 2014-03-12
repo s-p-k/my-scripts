@@ -42,8 +42,8 @@ fi
 if [ "$UNAME" = "Linux" ]; then
     MEMTTL=$(free -m | head -n 2 | tail -n 1 | cut -d\  -f1-11 | cut -d\  -f11)
     MEMAVL=$(free -m | head -n 2 | tail -n 1 | cut -d\  -f25)
-    echo "Total. Memory      : $MEMTTL"
-    echo "Avail. Memory      : $MEMAVL"
+    echo "Total. Memory     : $MEMTTL"
+    echo "Avail. Memory     : $MEMAVL"
 fi
 
 if [ "$UNAME" = "OpenBSD" ]; then
