@@ -48,7 +48,8 @@ fi
 
 if [ "$UNAME" = "OpenBSD" ]; then
     MEMTTL=$(sysctl hw.usermem | awk 'match($0,"="){print substr($0,RSTART+1)}')
-    echo "Total Memory      : $MEMTTL"
-fi    
+    MEMTTL=$(echo "$MEMTTL / 1024 / 1024" | bc -l | awk '{print substr($0,1,4)}')
+    echo "Total Memory      : $MEMTTL MB"
+fi
 
 echo "--------------------------------------------------------------------------------"
