@@ -1,0 +1,68 @@
+#!/bin/sh
+
+# This script requires mkvtoolinx to work.
+# See: http://www.bunkus.org/videotools/mkvtoolnix/
+#
+# TODO write a namefix script to remove weird characters from filenames
+
+################################################################################
+# functions
+################################################################################
+usage () {
+    echo "$0 [-h] [-i mkvfile] [-e mkvfile track_number:file.srt]"
+}
+
+mkv_info () {
+    mkvinfo $mkvfile
+    exit 0
+}
+
+extract_sub () {
+    mkvextract tracks $mkvfile $extract_args
+    exit 0
+}
+
+eflag=0
+iflag=0
+
+################################################################################
+# argument parsing
+###############################################################################
+
+
+while :
+do
+    case $1 in
+	-h)
+	    usage
+	    exit 0
+	    ;;
+	-i)
+	    iflag=1
+	    mkvfile=$2
+	    break
+	    ;;
+	-e)
+	    eflag=1
+	    mkvfile=$2
+	    extract_args=$3
+	    break
+	    ;;
+	*)
+	    usage
+	    exit 1
+	    ;;
+    esac
+done
+
+if [ $iflag -eq 1 -a $# -eq 2 ];
+then
+    mkv_info $mkvfile
+elif [ $eflag -eq 1 -a $# -eq 3 ];
+then
+    extract_sub $mkvfile $extract_args
+else
+    echo "not enough or too many parameters"
+    usage
+    exit 1
+fi

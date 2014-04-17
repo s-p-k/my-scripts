@@ -4,7 +4,47 @@ my-scripts
 A list of scripts i write from time to time that don't fit to a separate repo.
 
 * si
-
 * pingie
-
 * myip
+
+* subextract
+Extract subtitles from mkv files.
+
+$ subextract -i mkvfile
+
+The above command uses mkvtoolnix's[1] mkvinfo to retrieve info from the
+matroska file `mkvfile'. Searching on this command's output we can see that
+there are several tracks. A part of an example output could be something like:
+
+|  + Track number: 4 (track ID for mkvmerge & mkvextract: 3)
+|  + Track UID: 3140918427
+|  + Track type: subtitles
+|  + Enabled: 1
+|  + Default flag: 0
+|  + Forced flag: 0
+|  + Lacing flag: 0
+|  + MinCache: 0
+|  + Timecode scale: 1
+|  + Max BlockAddition ID: 0
+|  + Codec ID: S_TEXT/ASS
+|  + Codec decode all: 1
+|  + CodecPrivate, length 827
+|  + Language: eng
+|  + Name: English Subtitles
+
+This says, that there are english subtitles in the mkvfile in the .ass format.
+The track number for the subtitles according to the above output is 3:
+
+|  + Track number: 4 (track ID for mkvmerge & mkvextract: 3)
+
+We can then extract the .ass file from the mkv with the below command:
+
+$ subextract -e mkvfile output.srt
+
+* bat
+
+Read battery info on a Linux laptop.
+
+* ass2srt
+
+Convert .ass subs to .srt
