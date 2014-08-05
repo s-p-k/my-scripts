@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# clean ~/downloads from the dirty .meta and .torrent files
+
+rm $HOME/downloads/*.torrent
+rm $HOME/downloads/*.meta
