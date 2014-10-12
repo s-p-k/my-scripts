@@ -4,8 +4,13 @@ my-scripts
 A list of scripts i write from time to time that don't fit to a separate repo.
 
 * si
+A script that returns basic information about the systems it runs on.
+
 * pingie
+ping twice a server.
+
 * myip
+shows your ip
 
 * subextract
 Extract subtitles from mkv files.
@@ -42,9 +47,10 @@ We can then extract the .ass file from the mkv with the below command:
 $ subextract -e mkvfile output.srt
 
 * bat
-
 Read battery info on a Linux laptop.
 
 * ass2srt
-
 Convert .ass subs to .srt
+
+* parity
+Convert parities from and to USD, EUR and GBP.
