@@ -27,6 +27,9 @@ fi
 
 usage () {
     echo "Usage: $0 [-h] [-e file.mkv] [-i file.mkv]"
+    echo "-h        show this message"
+    echo "-i        retrieve mkv file information"
+    echo "-e        extract the #2 .ass subtitles from the mkv file"
 }
     
 getinfo() {
