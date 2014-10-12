@@ -3,10 +3,10 @@
 # find subtitle encoding and call mplayer appropriatly
 
 usage () {
-    echo "Usage: $0 file.srt file.avi"
+    echo "Usage: $0 file.srt video-file"
 }
 
-if [ $# -ne 3 ];
+if [ $# -ne 2 ];
 then
     usage
     exit 1
