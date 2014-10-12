@@ -1,0 +1,7 @@
+* Make sext to export different number of tracks [-n option]
+
+* Write rnm (a renamer script) that:
+  - removes ugly characters from file names
+  - renames uppercase file extension to lowercase
+  - renames all files in a directory in a specified from input format
+    This could be useful for photos/videos.
