@@ -71,37 +71,37 @@ if [[ $# -eq 2 ]]; then
     if [[ $d2eflag -eq 1 ]]; then
 	LINK=$(echo "$LINK" | sed s"/[0-9]/$number/g")
 	curl -L $LINK > result 2>/dev/null
-	grep "\<div id\>" result | sed -e 's/\(<div id=currency_converter_result>\|<span class=bld>\)//g' -e 's/<*.\{5\}>//'
+	grep -a "\<div id\>" result | sed -e 's/\(<div id=currency_converter_result>\|<span class=bld>\)//g' -e 's/<*.\{5\}>//'
     fi
 
     if [[ $d2pflag -eq 1 ]]; then
 	LINK=$(echo "$LINK" | sed s"/EUR/GBP/g" | sed s"/[0-9]/$number/g")
 	curl -L $LINK > result 2>/dev/null
-	grep "\<div id\>" result | sed -e 's/\(<div id=currency_converter_result>\|<span class=bld>\)//g' -e 's/<*.\{5\}>//'
+	grep -a "\<div id\>" result | sed -e 's/\(<div id=currency_converter_result>\|<span class=bld>\)//g' -e 's/<*.\{5\}>//'
     fi
 
     if [[ $e2dflag -eq 1 ]]; then
 	LINK=$(echo "$LINK" | sed s"/EUR/USD/" | sed 1,/USD/{s/USD/EUR/} | sed s"/[0-9]/$number/g")
 	curl -L $LINK > result 2>/dev/null
-	grep "\<div id\>" result | sed -e 's/\(<div id=currency_converter_result>\|<span class=bld>\)//g' -e 's/<*.\{5\}>//'
+	grep -a "\<div id\>" result | sed -e 's/\(<div id=currency_converter_result>\|<span class=bld>\)//g' -e 's/<*.\{5\}>//'
     fi
 
     if [[ $e2pflag -eq 1 ]]; then
 	LINK=$(echo "$LINK" | sed s"/EUR/GBP/" | sed "s/USD/EUR/" | sed s"/[0-9]/$number/g")
 	curl -L $LINK > result 2>/dev/null
-	grep "\<div id\>" result | sed -e 's/\(<div id=currency_converter_result>\|<span class=bld>\)//g' -e 's/<*.\{5\}>//'
+	grep -a "\<div id\>" result | sed -e 's/\(<div id=currency_converter_result>\|<span class=bld>\)//g' -e 's/<*.\{5\}>//'
     fi
 
     if [[ $p2eflag -eq 1 ]]; then
 	LINK=$(echo "$LINK" | sed s"/USD/EUR"/ | sed 1,/EUR/{s/EUR/GBP/} | sed s"/[0-9]/$number/g")
 	curl -L $LINK > result 2>/dev/null
-	grep "\<div id\>" result | sed -e 's/\(<div id=currency_converter_result>\|<span class=bld>\)//g' -e 's/<*.\{5\}>//'
+	grep -a "\<div id\>" result | sed -e 's/\(<div id=currency_converter_result>\|<span class=bld>\)//g' -e 's/<*.\{5\}>//'
     fi
 
     if [[ $p2dflag -eq 1 ]]; then
 	LINK=$(echo "$LINK" | sed "s/USD/GBP/" | sed "s/EUR/USD/" | sed s"/[0-9]/$number/g")
 	curl -L $LINK > result 2>/dev/null
-	grep "\<div id\>" result | sed -e 's/\(<div id=currency_converter_result>\|<span class=bld>\)//g' -e 's/<*.\{5\}>//'
+	grep -a "\<div id\>" result | sed -e 's/\(<div id=currency_converter_result>\|<span class=bld>\)//g' -e 's/<*.\{5\}>//'
     fi
     rm result
     exit 0
