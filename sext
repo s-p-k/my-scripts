@@ -33,15 +33,15 @@ usage () {
 }
     
 getinfo() {
-    mkvinfo $fl
+    mkvinfo "$fl"
 }
 
 xtract_ass() {
-    resulting_file=$(basename -s .mkv $fl) #remove file extention
+    resulting_file=$(basename -s .mkv "$fl") #remove file extention
     resulting_file+=".ass" # resulting filename
     track+=":$resulting_file"
     echo "extracting to $resulting_file"
-    mkvextract tracks $fl $track
+    mkvextract tracks "$fl" "$track"
 }
 
 #-------------------------------------------------------------------------------
@@ -61,7 +61,7 @@ do
         -i)
             iflag=1
 	    fl=$2
-	    getinfo $fl
+	    getinfo "$fl"
             break
             ;;
         -e)
@@ -84,7 +84,7 @@ then
     exit 0
 elif [ $eflag -eq 1 -a $iflag -eq 0 -a $# -eq 2 ];
 then
-    xtract_ass $fl $track
+    xtract_ass "$fl" "$track"
 else
     echo "Wrong usage"
     usage
