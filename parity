@@ -17,7 +17,7 @@ usage () {
 }
 
 hflag=0
-d2uflag=0
+d2eflag=0
 d2pflag=0
 e2dflag=0
 e2pflag=0
