@@ -2,5 +2,5 @@
 
 # ping 2 times $1
 
-ping -c 2 $1 | sed -n '6p'
+ping -c 2 "$1" | sed -n '6p'
 
