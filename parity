@@ -61,44 +61,43 @@ do
     esac
 done
 
-if [[ $hflag -eq 1 ]];
-then
+if [ $hflag -eq 1 ]; then
     usage
     exit 1
 fi
 
-if [[ $# -eq 2 ]]; then
-    if [[ $d2eflag -eq 1 ]]; then
+if [ $# -eq 2 ]; then
+    if [ $d2eflag -eq 1 ]; then
 	LINK=$(echo "$LINK" | sed s"/[0-9]/$number/g")
 	curl -L $LINK > result 2>/dev/null
 	grep -a "<div id=currency_converter_result>" result | sed 's/<[^>]*>//g'
     fi
 
-    if [[ $d2pflag -eq 1 ]]; then
+    if [ $d2pflag -eq 1 ]; then
 	LINK=$(echo "$LINK" | sed s"/EUR/GBP/g" | sed s"/[0-9]/$number/g")
 	curl -L $LINK > result 2>/dev/null
 	grep -a "<div id=currency_converter_result>" result | sed 's/<[^>]*>//g'
     fi
 
-    if [[ $e2dflag -eq 1 ]]; then
+    if [ $e2dflag -eq 1 ]; then
 	LINK=$(echo "$LINK" | sed s"/EUR/USD/" | sed 1,/USD/{s/USD/EUR/} | sed s"/[0-9]/$number/g")
 	curl -L $LINK > result 2>/dev/null
         grep -a "<div id=currency_converter_result>" result | sed 's/<[^>]*>//g'
     fi
 
-    if [[ $e2pflag -eq 1 ]]; then
+    if [ $e2pflag -eq 1 ]; then
 	LINK=$(echo "$LINK" | sed s"/EUR/GBP/" | sed "s/USD/EUR/" | sed s"/[0-9]/$number/g")
 	curl -L $LINK > result 2>/dev/null
 	grep -a "<div id=currency_converter_result>" result | sed 's/<[^>]*>//g'
     fi
 
-    if [[ $p2eflag -eq 1 ]]; then
+    if [ $p2eflag -eq 1 ]; then
 	LINK=$(echo "$LINK" | sed s"/USD/EUR"/ | sed 1,/EUR/{s/EUR/GBP/} | sed s"/[0-9]/$number/g")
 	curl -L $LINK > result 2>/dev/null
 	grep -a "<div id=currency_converter_result>" result | sed 's/<[^>]*>//g'
     fi
 
-    if [[ $p2dflag -eq 1 ]]; then
+    if [ $p2dflag -eq 1 ]; then
 	LINK=$(echo "$LINK" | sed "s/USD/GBP/" | sed "s/EUR/USD/" | sed s"/[0-9]/$number/g")
 	curl -L $LINK > result 2>/dev/null
 	grep -a "<div id=currency_converter_result>" result | sed 's/<[^>]*>//g'
