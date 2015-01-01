@@ -2,4 +2,4 @@
 
 # $1 is file.mp4 $2 is the output file: file.mkv
 
-ffmpeg -i $1 -vcodec ffv1 -acodec pcm_s16le $2
+ffmpeg -i "$1" -vcodec ffv1 -acodec pcm_s16le "$2"
