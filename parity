@@ -80,7 +80,7 @@ if [ $# -eq 2 ]; then
     fi
 
     if [ $e2dflag -eq 1 ]; then
-	LINK=$(echo "$LINK" | sed s"/EUR/USD/" | sed 1,/USD/{s/USD/EUR/} | sed s"/[0-9]/$number/g")
+	LINK=$(echo "$LINK" | sed s"/EUR/USD/" | sed '1s/USD/EUR/;' | sed s"/[0-9]/$number/g")
 	curl -L "$LINK" > result 2>/dev/null
         grep -a "<div id=currency_converter_result>" result | sed 's/<[^>]*>//g'
     fi
@@ -92,7 +92,7 @@ if [ $# -eq 2 ]; then
     fi
 
     if [ $p2eflag -eq 1 ]; then
-	LINK=$(echo "$LINK" | sed s"/USD/EUR"/ | sed 1,/EUR/{s/EUR/GBP/} | sed s"/[0-9]/$number/g")
+	LINK=$(echo "$LINK" | sed s"/USD/EUR"/ | sed '1s/USD/EUR/;' | sed s"/[0-9]/$number/g")
 	curl -L "$LINK" > result 2>/dev/null
 	grep -a "<div id=currency_converter_result>" result | sed 's/<[^>]*>//g'
     fi
