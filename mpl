@@ -17,13 +17,13 @@ movie=$2
 
 ret=$(file "$1" | awk -F":" '{ print $2 }' | sed 's/^ //' | cut -d\  -f1)
 
-if [ "$ret" == "UTF-8" ];
+if [ "$ret" = "UTF-8" ];
 then
-    mplayer -subcp utf8 -sub $sub $movie
+    mplayer -subcp utf8 -sub "$sub" "$movie"
     exit 0
-elif [ "$ret" == "ISO-8859" ];
+elif [ "$ret" = "ISO-8859" ];
 then
-    mplayer -subcp iso8859-7 -sub $sub $movie
+    mplayer -subcp iso8859-7 -sub "$sub" "$movie"
     exit 0
 else
     echo "sub encoding not found"
