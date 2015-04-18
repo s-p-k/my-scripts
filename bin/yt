@@ -1,0 +1,20 @@
+#!/bin/sh
+
+# taken from: http://git.2f30.org/scripts/tree/surf/yt
+
+format="--max-quality 135" # leave empty for default
+# format="-f 35/45" # leave empty for default
+player="mplayer -idx"
+playercache="2048"
+
+url="$1"
+
+yttest="youtube"
+
+if test "${url#*$yttest}" != "$url"
+then
+	format="-f 18/22" # leave empty for default
+	wget -O - $(youtube-dl $format -g "$url") | mplayer -cache $playercache -
+else
+	$player -cache $playercache `youtube-dl $format -g $url`
+fi

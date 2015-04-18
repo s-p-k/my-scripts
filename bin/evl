@@ -1,0 +1,6 @@
+#!/bin/sh
+
+expression="$1"
+
+echo "$expression" | csi | tail -n 2 | head -n 1 | dmenu
+

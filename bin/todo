@@ -1,0 +1,40 @@
+#!/bin/sh
+
+TODODIR=$HOME/.todo
+eflag=0
+
+# check if: $EDITOR is set, $TODODIR exists, set and create otherwise
+test -z "$EDITOR" && EDITOR=/usr/bin/vi
+test ! -d "$TODODIR" && mkdir "$MYDIR"
+
+while :
+do
+    case $1 in
+        -e)
+	    eflag=1
+	    shift
+	    ;;
+        --) # End of all options
+	    shift
+	    break
+	    ;;
+        -*)
+	    echo "WARNING: Unknown option: $1" >&2
+	    exit 1
+	    ;;
+        *)  # no more options. Stop while loop
+	    break
+	    ;;
+    esac
+done
+
+if [ "$#" -eq 0 ]; then
+    cat $TODODIR/todo
+fi
+
+if [ "$eflag" -eq 1 ]; then
+    $EDITOR $TODODIR/todo
+    echo ''
+fi
+
+echo -e '\n\nbye bawss'

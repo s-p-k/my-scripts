@@ -1,0 +1,19 @@
+#!/bin/ksh
+######################################################################
+# A simple script to encode flac files in a #directory recursively.  #                   
+# It encodes flac to mp3 files in 320k quality using ffmpeg. Firstly,#
+# the script encodes song.flac to song.flac.mp3, then the file is    #
+#renamed to song.mp3.                                                #
+#                                                                    #
+# Author: Pavlos Moysidis                                            #
+# Year: 2012                                                         #
+#                                                                    #
+######################################################################
+
+ls -R *.flac | xargs -IQ ffmpeg -i Q -ab 320k Q.mp3
+for file in *flac*mp3
+  do
+    mv "$file" "$file//.flac/}"
+done
+
+

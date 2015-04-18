@@ -1,0 +1,3 @@
+#!/bin/sh
+
+groff -Tascii -man iden.1

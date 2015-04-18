@@ -1,0 +1,7 @@
+#!/bin/sh
+# cookie file
+cookiefile=$HOME/.surf/cookies.txt
+
+# clear the cookie file
+> "$cookiefile"
+

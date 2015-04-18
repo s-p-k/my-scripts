@@ -1,0 +1,55 @@
+#!/bin/sh
+
+echo "--------------------------------------------------------------------------------"
+echo "Printing System Info"
+echo "--------------------------------------------------------------------------------"
+
+#snd=$(lspci | grep Audio | tail -n 1 | cut -d\  -f12-15 | sed -e 's/\[//' -e 's/\]//')
+#vga=$(lspci| grep VGA | cut -d\  -f11-14 | sed -e 's/\[//' -e 's/\]//')
+
+UNAME=$(uname)
+
+if [ "$UNAME" = "Linux" ]; then
+    OS=$UNAME
+    KERNEL=$(uname -r)
+    KERNEL_VERSION=$(uname -v)
+    ARCH=$(uname -m)
+    USER=$(whoami)
+    HSTN=$(hostname)
+    UP=$(uptime -p)
+elif [ "$UNAME" = "OpenBSD" ]; then
+    OS=$UNAME
+    KERNEL=$(uname -r)
+    KERNEL_VERSION=$(uname -v)
+    ARCH=$(uname -m)
+    USER=$(whoami)
+    HSTN=$(hostname)
+    UP=$(uptime)
+else
+    echo "no si info implemented yet for $(UNAME)"
+fi
+
+if [ "$UNAME" = "Linux" -o "$UNAME" = "OpenBSD" ]; then
+    echo "OS                : $OS"
+    echo "KERNEL            : $KERNEL"
+    echo "K.VERSION         : $KERNEL_VERSION"
+    echo "ARCH              : $ARCH"
+    echo "USERNAME          : $USER"
+    echo "HOSTNAME          : $HSTN"
+    echo "UPTIME            : $UP"
+fi
+
+if [ "$UNAME" = "Linux" ]; then
+    MEMTTL=$(free -m | head -n 2 | tail -n 1 | cut -d\  -f1-11 | cut -d\  -f11)
+    MEMAVL=$(free -m | head -n 2 | tail -n 1 | cut -d\  -f26)
+    echo "Total. Memory     : $MEMTTL"
+    echo "Avail. Memory     : $MEMAVL"
+fi
+
+if [ "$UNAME" = "OpenBSD" ]; then
+    MEMTTL=$(sysctl hw.usermem | awk 'match($0,"="){print substr($0,RSTART+1)}')
+    MEMTTL=$(echo "$MEMTTL / 1024 / 1024" | bc -l | awk '{print substr($0,1,4)}')
+    echo "Total Memory      : $MEMTTL MB"
+fi
+
+echo "--------------------------------------------------------------------------------"
