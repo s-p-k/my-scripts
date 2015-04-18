@@ -1,4 +1,0 @@
-#!/bin/sh
-# Show video and sound information for a video file
-
-mplayer -vo null -ao null -identify -frames 0 "$1"

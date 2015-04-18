@@ -1,4 +1,0 @@
-#!/bin/sh
-
-# Just show mounted psysical disks
-df -h | grep "^/dev/"
