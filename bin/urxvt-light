@@ -1,3 +1,3 @@
 #!/bin/sh
 # run uxterm in places with a lot of light
-urxt -fg black -bg white -fn 10x20
+urxvt -fg black -bg white -fn 10x20
