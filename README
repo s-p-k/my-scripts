@@ -3,54 +3,24 @@ my-scripts
 
 A list of scripts i write from time to time that don't fit to a separate repo.
 
-* si
-A script that returns basic information about the systems it runs on.
-
-* pingie
-ping twice a server.
-
-* myip
-shows your ip
-
-* subextract
-Extract subtitles from mkv files.
-
-$ subextract -i mkvfile
-
-The above command uses mkvtoolnix's[1] mkvinfo to retrieve info from the
-matroska file `mkvfile'. Searching on this command's output we can see that
-there are several tracks. A part of an example output could be something like:
-
-|  + Track number: 4 (track ID for mkvmerge & mkvextract: 3)
-|  + Track UID: 3140918427
-|  + Track type: subtitles
-|  + Enabled: 1
-|  + Default flag: 0
-|  + Forced flag: 0
-|  + Lacing flag: 0
-|  + MinCache: 0
-|  + Timecode scale: 1
-|  + Max BlockAddition ID: 0
-|  + Codec ID: S_TEXT/ASS
-|  + Codec decode all: 1
-|  + CodecPrivate, length 827
-|  + Language: eng
-|  + Name: English Subtitles
-
-This says, that there are english subtitles in the mkvfile in the .ass format.
-The track number for the subtitles according to the above output is 3:
-
-|  + Track number: 4 (track ID for mkvmerge & mkvextract: 3)
-
-We can then extract the .ass file from the mkv with the below command:
-
-$ subextract -e mkvfile output.srt
-
-* bat
-Read battery info on a Linux laptop.
-
-* ass2srt
-Convert .ass subs to .srt
-
-* parity
-Convert parities from and to USD, EUR and GBP.
+- ass2srt        convert .ass subtitles to .srt: ass2srt < sub.ass >> sub.srt
+- bat            battery status on linux laptop: bat
+- cln            remove dirty .meta and .torrent files from downloads: cln
+- ds             return the size of a directory in human readable format: ds $HOME/repos
+- evl            run and eval scheme expressions from dmenu and show results back to dmenu: evl "(+ 1 2)"
+- flac2mp3       convert flac files to mp3
+- mnt            show mounted physical disks
+- mp42mkv        convert mp4 to mkv
+- mpl            call mplayer according to subtitle encoding
+- parity         convert from EU to GBP and USD. Vice versa too.
+- pingie         quickly ping a host: pingie google.com
+- readmanpage    read man page files: readmanpage manual.1
+- rmcookies      rm surf cookies.
+- sext           extract subtitles from mkv files.
+- si             simple system information script.
+- todo           old todo list management script.
+- tum            simple mutt wrapper for opening multiple accounts easily.
+- urxvt-light    change urxt colors.
+- vidinfo        extract information from video files.
+- wav2mp3.sh     convert wav files to mp3
+- yt             opens youtube videos with "C-s" if surf browser is patched.
