@@ -1,0 +1,42 @@
+#!/bin/sh
+# create an arch linux usb bootable using dd(1)
+# usage mkarchusb /path/to/iso /dev/sdd
+
+# path to archlinux iso
+pt="$1"
+# device e.g. /dec/sdc1
+dv="$2"
+
+usage () {
+    cat <<EOF
+Usage: mkarchusb /path/to/archlinux.iso /dev/sdc
+EOF
+}
+
+
+while :
+do
+    printf "create arch usb bootable on %s from %s ?\n" "$dv" "$pt"
+    printf "is that ok? y|n? "
+    read yn
+
+    case $yn in
+	Y | y)
+	    printf "Creating archlinux bootable usb on %s, please wait...\n" "$dv"
+	    dd bs=4M if="$pt" of="$dv" && sync
+	    break
+	    ;;
+	N | n)
+	    echo "creation aborted"
+	    usage
+	    exit 1
+	    ;;
+	*)
+	    echo "Please answer yes or no"
+	    continue
+	    ;;
+    esac
+done
+
+printf "Created usb successfully\n"
+exit 0
