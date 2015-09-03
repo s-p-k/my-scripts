@@ -1,0 +1,11 @@
+#!/bin/sh
+# list info about connected devices in the lan
+# depends on: nmap, sudo
+# usage example: ./lscan 192.168.2.1/24
+
+nw="$1"
+[ "$(whoami)" != "root" ] && exec sudo -- nmap -sn "$nw"
+
+
+
+
