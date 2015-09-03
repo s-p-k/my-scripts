@@ -1,0 +1,53 @@
+#!/bin/sh
+# See LICENSE file for detailsl
+# format device to a specified format
+# usage: formatdisk vfat /dev/sdc1
+
+format_to="$1"
+device="$2"
+cmd="mkfs."
+
+usage () {
+    cat <<EOF
+Usage: formatdisk [FILESYSTEM] [DEVICE]
+FILESYSTEM can be:
+
+vfat, ext2, ext3, ext4, ext4dev, ntfs, fat,
+jfs, minix, msdos, ntfs, reiserfs, xfs, bfs, cramfs
+Read mkfs(8) man page for details
+
+Examples:
+./formatdisk vfat /dev/sdc1
+./formatdisk msdos /dev/sdc1
+EOF
+}
+
+while :
+do
+    printf "format %s to %s?\n" "$device" "$format_to"
+    printf "yes|no?"
+    read  yn
+
+    case $yn in
+	Y | y)
+	    printf "formatting...\n"
+	    #mkfs.vfat -I /dev/sdc1
+	    cmd+="$1"
+	    "$cmd" -I "$device"
+	    break
+	    ;;
+	N | n)
+	    printf "formatting aborted\n\n"
+	    usage
+	    exit 1
+	    ;;
+	*)
+	    echo "Please answer yes or no"
+	    continue
+	    ;;
+    esac
+done
+
+printf "formatting was succesfull\n"
+exit 0
+
