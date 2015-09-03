@@ -1,4 +1,5 @@
 #!/bin/sh
+# See LICENSE file for details
 # create an arch linux usb bootable using dd(1)
 # usage mkarchusb /path/to/iso /dev/sdd
 
@@ -9,7 +10,7 @@ dv="$2"
 
 usage () {
     cat <<EOF
-Usage: mkarchusb /path/to/archlinux.iso /dev/sdc
+Usage: ./mkarchusb /path/to/archlinux.iso /dev/sdc
 EOF
 }
 
