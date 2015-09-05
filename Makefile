@@ -6,7 +6,7 @@ BIN = ass2srt        \
       flac2mp3       \
       formatdisk     \
       lscan          \
-      mkarchusb      \
+      mklinusb       \
       mnt            \
       mp42mkv        \
       mpl            \
