@@ -1,29 +1,29 @@
 #!/bin/sh
 # See LICENSE file for details
-# create an arch linux usb bootable using dd(1)
-# usage mkarchusb /path/to/iso /dev/sdd
+# create an linux usb bootable using dd(1)
+# usage mklinusb /path/to/iso /dev/sdd
 
-# path to archlinux iso
+# path to your distro iso
 pt="$1"
 # device e.g. /dec/sdc1
 dv="$2"
 
 usage () {
     cat <<EOF
-Usage: ./mkarchusb /path/to/archlinux.iso /dev/sdc
+Usage: ./mklinusb /path/to/linux.iso /dev/sdc
 EOF
 }
 
 
 while :
 do
-    printf "create arch usb bootable on %s from %s ?\n" "$dv" "$pt"
+    printf "create usb bootable on %s from %s ?\n" "$dv" "$pt"
     printf "is that ok? y|n? "
     read yn
 
     case $yn in
 	Y | y)
-	    printf "Creating archlinux bootable usb on %s, please wait...\n" "$dv"
+	    printf "Creating linux bootable usb on %s, please wait...\n" "$dv"
 	    dd bs=4M if="$pt" of="$dv" && sync
 	    break
 	    ;;
