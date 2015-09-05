@@ -1,6 +1,6 @@
 #!/bin/sh
 # See LICENSE file for details
-# create an linux usb bootable using dd(1)
+# create a linux usb bootable using dd(1)
 # usage mklinusb /path/to/iso /dev/sdd
 
 # path to your distro iso
