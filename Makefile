@@ -15,6 +15,7 @@ BIN = ass2srt        \
       readmanpage    \
       rmcookies      \
       sext           \
+      sfocus         \
       si             \
       todo           \
       tum            \
