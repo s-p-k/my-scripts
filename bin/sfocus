@@ -1,0 +1,35 @@
+#!/bin/sh
+# See LICENSE file for details
+# simple script to use the pomodoro technique:
+# See more at: https://en.wikipedia.org/wiki/Pomodoro_Technique
+# Read the sleep(1) man page if you want to change the interval
+# Usage: ./sfocus
+
+cnt=0
+# change interval it to whatever fits your needs. See sleep(1) man page.
+interval="25m"
+#break_interval="5m"
+
+if [ "$#" -eq 0 ];
+then
+    while :
+    do
+	printf 'Counter started...'
+	printf "you will be notified by a beep when it's time for break\n"	
+	cnt=$((cnt + 1))
+	if [ "$cnt" -eq 5 ];
+	then
+	    printf 'Time for the big break!!! 30 mins of break!!! \n' \
+		&& sleep "$interval" && printf '\007' \
+		&& printf 'Note: Starting all over\n'
+	    cnt=0
+	    continue
+	else
+	    sleep "$interval" && printf 'Time for a break\n' && printf '\007'
+	    continue
+	fi
+    done
+else
+    printf 'too many parameters passed to sfocus\n'
+fi
+
