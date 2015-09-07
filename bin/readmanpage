@@ -1,3 +1,4 @@
 #!/bin/sh
+# Usage: reamanpage manual.1
 
-groff -Tascii -man iden.1
+groff -Tascii -man $1
