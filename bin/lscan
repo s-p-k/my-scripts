@@ -6,6 +6,3 @@
 nw="$1"
 [ "$(whoami)" != "root" ] && exec sudo -- nmap -sn "$nw"
 
-
-
-
