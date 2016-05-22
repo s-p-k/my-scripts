@@ -14,7 +14,7 @@ yttest="youtube"
 if test "${url#*$yttest}" != "$url"
 then
 	format="-f 18/22" # leave empty for default
-	wget -O - $(youtube-dl $format -g "$url") | mplayer -cache $playercache -
+	wget -O - "$(youtube-dl "$format" -g "$url") | mplayer -cache $playercache -"
 else
-	$player -cache $playercache `youtube-dl $format -g $url`
+	"$player" -cache "$playercache" "$(youtube-dl "$format" -g "$url")"
 fi
