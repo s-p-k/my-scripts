@@ -26,7 +26,7 @@ while :
 do
     printf "format %s to %s?\n" "$device" "$format_to"
     printf "yes|no?"
-    read  yn
+    read  -r yn
 
     case $yn in
 	Y | y)

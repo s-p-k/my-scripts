@@ -19,7 +19,7 @@ while :
 do
     printf "create usb bootable on %s from %s ?\n" "$dv" "$pt"
     printf "is that ok? y|n? "
-    read yn
+    read -r yn
 
     case $yn in
 	Y | y)
