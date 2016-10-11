@@ -18,6 +18,7 @@ BIN = ass2srt        \
       sext           \
       sfocus         \
       si             \
+      sitetraffic    \
       todo           \
       tum            \
       urxvt-light    \

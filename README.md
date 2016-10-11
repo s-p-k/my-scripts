@@ -23,6 +23,7 @@ A list of scripts i write from time to time that don't fit to a separate repo.
 - sext           extract subtitles from mkv files.
 - sfocus	 a simple script for the pomodoro technique.
 - si             simple system information script.
+- sitetraffic    get site traffic from siteworthtraffic.com: sitetraffic domain.org
 - todo           old todo list management script.
 - tum            simple mutt wrapper for opening multiple accounts easily.
 - urxvt-light    change urxt colors.
