@@ -1,5 +1,6 @@
 BIN = ass2srt        \
       bat            \
+      chkdomain      \
       cln            \
       ds             \
       evl            \
