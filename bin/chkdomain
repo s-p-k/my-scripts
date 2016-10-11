@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# check if domain name is available for registration
+# depends on: whois
+
+domain="$1"
+ret=$(whois "$domain" | head -n 1)
+if [ "$ret" = "NOT FOUND" ];
+then
+        printf "%s is available for registration\n" "$domain"
+else
+        printf "%s is unavailable\n" "$domain"
+fi
+
