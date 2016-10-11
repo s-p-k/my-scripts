@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# get site traffic info from siteworthtraffic.com
+# depends on lynx
+
+main_site="http://www.siteworthtraffic.com/report/"
+url="$1"
+
+url="$main_site$url"
+lynx --dump "$url" | sed -n '26,42p'
